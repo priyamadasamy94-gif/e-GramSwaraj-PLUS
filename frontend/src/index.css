@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  
+  html.font-scale-sm { font-size: 14px; }
+  html.font-scale-normal { font-size: 16px; }
+  html.font-scale-lg { font-size: 18px; }
+  html.font-scale-xl { font-size: 20px; }
+
+  :root, [data-theme="gov-classic"] {
+    --gov-50: #eef3fb; --gov-100: #d9e4f5; --gov-200: #b3c8eb; --gov-300: #8aa9dc; --gov-400: #5a82c7;
+    --gov-500: #3563ad; --gov-600: #244d92; --gov-700: #1c3d76; --gov-800: #162f5c; --gov-900: #0f2142; --gov-950: #0a162d;
+    --accent-saffron: #f28c28; --accent-green: #138808;
+    --bg-page: #f8fafc; --bg-card: #ffffff; --text-main: #0f172a; --border-main: #e2e8f0;
+  }
+  
+  [data-theme="panchayat-green"] {
+    --gov-50: #f0fdf4; --gov-100: #dcfce7; --gov-200: #bbf7d0; --gov-300: #86efac; --gov-400: #4ade80;
+    --gov-500: #22c55e; --gov-600: #16a34a; --gov-700: #15803d; --gov-800: #166534; --gov-900: #14532d; --gov-950: #052e16;
+    --accent-saffron: #ca8a04; --accent-green: #15803d;
+    --bg-page: #f0fdf4; --bg-card: #ffffff; --text-main: #0f172a; --border-main: #bbf7d0;
+  }
+  
+  [data-theme="nic-blue"] {
+    --gov-50: #eff6ff; --gov-100: #dbeafe; --gov-200: #bfdbfe; --gov-300: #93c5fd; --gov-400: #60a5fa;
+    --gov-500: #3b82f6; --gov-600: #2563eb; --gov-700: #1d4ed8; --gov-800: #1e40af; --gov-900: #1e3a8a; --gov-950: #172554;
+    --accent-saffron: #f59e0b; --accent-green: #10b981;
+    --bg-page: #f0f9ff; --bg-card: #ffffff; --text-main: #0f172a; --border-main: #bae6fd;
+  }
+  
+  [data-theme="saffron-warm"] {
+    --gov-50: #fff7ed; --gov-100: #ffedd5; --gov-200: #fed7aa; --gov-300: #fdba74; --gov-400: #fb923c;
+    --gov-500: #f97316; --gov-600: #ea580c; --gov-700: #c2410c; --gov-800: #9a3412; --gov-900: #7c2d12; --gov-950: #431407;
+    --accent-saffron: #ea580c; --accent-green: #15803d;
+    --bg-page: #fffbf5; --bg-card: #ffffff; --text-main: #1c1917; --border-main: #fed7aa;
+  }
+  
+  [data-theme="dark"] {
+    --gov-50: #1e293b; --gov-100: #334155; --gov-200: #475569; --gov-300: #64748b; --gov-400: #94a3b8;
+    --gov-500: #3b82f6; --gov-600: #2563eb; --gov-700: #1d4ed8; --gov-800: #0f172a; --gov-900: #0a0f1d; --gov-950: #050811;
+    --accent-saffron: #f59e0b; --accent-green: #22c55e;
+    --bg-page: #0a0f1d; --bg-card: #111827; --text-main: #f8fafc; --border-main: #1e293b;
+  }
+  
+  [data-theme="high-contrast"] {
+    --gov-50: #1a1a1a; --gov-100: #262626; --gov-200: #404040; --gov-300: #fde047; --gov-400: #facc15;
+    --gov-500: #eab308; --gov-600: #ca8a04; --gov-700: #a16207; --gov-800: #000000; --gov-900: #000000; --gov-950: #000000;
+    --accent-saffron: #facc15; --accent-green: #4ade80;
+    --bg-page: #000000; --bg-card: #0d0d0d; --text-main: #ffff00; --border-main: #ffff00;
+  }
+
+  body { 
+    background-color: var(--bg-page); 
+    color: var(--text-main); 
+    @apply antialiased transition-colors duration-200; 
+  }
+  :focus-visible { @apply outline-none ring-2 ring-gov-500 ring-offset-1; }
+}
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-md px-3.5 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60 whitespace-nowrap; }
+  .btn-primary { @apply btn bg-gov-700 text-white hover:bg-gov-800; }
+  .btn-secondary { @apply btn border border-slate-300 bg-white text-slate-700 hover:bg-slate-50; }
+  .btn-danger { @apply btn bg-red-600 text-white hover:bg-red-700; }
+  .btn-ghost { @apply btn text-slate-600 hover:bg-slate-100; }
+  .btn-sm { @apply px-2.5 py-1.5 text-xs; }
+  .input { @apply block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:border-gov-500 focus:outline-none focus:ring-2 focus:ring-gov-200 disabled:bg-slate-100; }
+  .label { @apply mb-1 block text-sm font-medium text-slate-700; }
+  .card { @apply rounded-lg border border-slate-200 bg-white shadow-card; }
+  .tricolor { background: linear-gradient(90deg, #f28c28 0 33.3%, #ffffff 33.3% 66.6%, #138808 66.6% 100%); }
+  .table-th { @apply px-4 py-2.5 text-left text-xs font-semibold uppercase tracking-wide text-slate-500; }
+  .table-td { @apply px-4 py-3 text-sm text-slate-700 align-top; }
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; }
+  .card { box-shadow: none; border-color: #ddd; }
+  .print-area { padding: 0 !important; }
+}
+.leaflet-container { font: inherit; }
